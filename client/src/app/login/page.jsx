@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
+import Navbar from '@/components/ui/navbar'
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Please enter a valid email address").required("Email is required"),
@@ -47,6 +48,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+      <Navbar></Navbar>
       <div className="container mx-auto px-4 py-8">
         <div className="mx-auto max-w-md">
           <Card className="shadow-xl border-0 bg-white/90 backdrop-blur-sm">
@@ -54,7 +56,7 @@ export default function LoginPage() {
               <div className="flex justify-center gap-2 mb-4">
                 <img src="/images/logo.png" className="h-30 w-40" alt="Logo" />
               </div>
-              <CardTitle className="text-2xl font-bold text-gray-900">Sign in to MusicMarket</CardTitle>
+              <CardTitle className="text-2xl font-bold text-gray-900">Sign in to YalaRythms</CardTitle>
               <CardDescription className="text-gray-600">
                 Welcome back! Enter your credentials to access your account.
               </CardDescription>

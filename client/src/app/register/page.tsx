@@ -14,6 +14,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Separator } from "@/components/ui/separator"
 import axios from "axios"
+import { toast } from "sonner"
+import Navbar from "@/components/ui/navbar"
 
 // Validation Schema
 const validationSchema = Yup.object({
@@ -64,8 +66,8 @@ export default function RegisterPage() {
 const handleSubmit = async (values, { setSubmitting, setStatus }) => {
   try {
     setStatus(null)
-    // Send data to backend
-    const response = await axios.post("http://localhost:3000/register", values)
+    const response = await axios.post("http://localhost:3001/register", values)
+    // toast(response.data.message)
 
     if (response.status === 201 || response.status === 200) {
       setStatus({ type: "success", message: "Account created successfully! Please check your email for verification." })
@@ -94,7 +96,7 @@ const handleSubmit = async (values, { setSubmitting, setStatus }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
       
-
+      <Navbar></Navbar>
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <div className="mx-auto max-w-md">
