@@ -1,4 +1,4 @@
-import Navbar, { NavigationMenuDemo } from '@/components/ui/navbar'
+import Navbar from '@/components/ui/navbar'
 import React from 'react'
 
 const Home = () => {

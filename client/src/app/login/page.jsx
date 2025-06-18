@@ -12,7 +12,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import Navbar from '@/components/ui/navbar'
+import axios from 'axios'
+import { useRouter } from "next/navigation"
 
+
+import { toast } from 'sonner';
 const validationSchema = Yup.object({
   email: Yup.string().email("Please enter a valid email address").required("Email is required"),
   password: Yup.string().required("Password is required"),
@@ -25,26 +29,17 @@ const initialValues = {
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
+const router =useRouter()
+ const handleSubmit = async(values, { setSubmitting }) => {
+    const {data}= await  axios.post('http://localhost:3001/login', values)
+    if(data?.isLoggedin) router.push('/');
+    toast(data?.message)
+    // Simulate API call
+    setTimeout(() => {
 
-  const handleSubmit = async (values, { setSubmitting, setStatus }) => {
-    try {
-      setStatus(null)
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      // Replace with real authentication logic
-      if (values.email === "demo@example.com" && values.password === "Password123!") {
-        setStatus({ type: "success", message: "Login successful! Redirecting..." })
-        // router.push('/dashboard')
-      } else {
-        setStatus({ type: "error", message: "Invalid email or password." })
-      }
-    } catch (error) {
-      setStatus({ type: "error", message: "Login failed. Please try again." })
-    } finally {
-      setSubmitting(false)
-    }
-  }
+      setSubmitting(false);
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
