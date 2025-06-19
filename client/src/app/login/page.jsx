@@ -14,6 +14,8 @@ import { Separator } from "@/components/ui/separator"
 import Navbar from '@/components/ui/navbar'
 import axios from 'axios'
 import { useRouter } from "next/navigation"
+import { useDispatch } from 'react-redux';
+import { addLoginDetails } from '@/redux/reducerSlices/userSlice';
 
 
 import { toast } from 'sonner';
@@ -30,10 +32,15 @@ const initialValues = {
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
 const router =useRouter()
+const dispatch= useDispatch()
  const handleSubmit = async(values, { setSubmitting }) => {
     const {data}= await  axios.post('http://localhost:3001/login', values)
     if(data?.isLoggedin) router.push('/');
     toast(data?.message)
+    if(data){
+      debugger;
+      dispatch(addLoginDetails(data))
+    }
     // Simulate API call
     setTimeout(() => {
 
