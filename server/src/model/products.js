@@ -8,7 +8,7 @@ const productSchema = new Schema({
   category: String,
   imageUrl: { type: String }, // Store image URL or path here
   condition: { type: String, enum: ['new', 'used'], default: 'used' },
-  seller: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  seller: { type: Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now }
 });
 
