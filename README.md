@@ -33,7 +33,14 @@ Yala_Rythms/
 ---
 
 ## 🗂️ Project Phases
-
+### **Minimal viable Product**
+- [x] Admin login
+- [x] User login
+- [x] Admin can add and remove musical products
+- [x] User can browse products
+- [ ] Users can add to cart
+- [ ] Users can proceed to cheeckout
+- [ ] Users can Search for products
 ### **Phase 1: Project Setup**
 - [x] Initialize Next.js frontend and Express backend
 - [x] Configure MongoDB with Mongoose
