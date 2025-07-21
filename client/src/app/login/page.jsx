@@ -35,7 +35,7 @@ const router =useRouter()
 const dispatch= useDispatch()
  const handleSubmit = async(values, { setSubmitting }) => {
     const {data}= await  axios.post('http://localhost:3001/login', values)
-    if(data?.isLoggedin) router.push('/');
+    if(data?.isLoggedin) router.push('/dashboard');
     toast(data?.message)
     if(data){
       debugger;
